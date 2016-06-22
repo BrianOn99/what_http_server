@@ -1,0 +1,35 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<h1>What HTTP Server</h1>
+  <section>
+  {% if asked_url %}
+     {% if http_error %}
+     We cannot connect to {{ asked_url }}
+     {% else %}
+     {{ asked_url }} is using {{ result_server }}
+     {% endif %}
+  {% endif %}
+  </section>
+  <div class="row">
+    <div class="one-third column card">Nginx</div>
+    <div class="one-third column card">Apache</div>
+    <div class="one-third column card">Lighttpd</div>
+  </div>
+  <form action="/" method="GET">
+    {% csrf_token %}
+    <div class="form-group">
+      <input name="url" class="u-full-width" type="text" placeholder="http://rubyweekly.com" required>
+    </div>
+    <input class="main-input" type="submit" class="btn btn-success btn-lg btn-block" value="Submit">
+  </form>
+
+  <section>
+     <h3>Other people also queried following sites:</h3>
+     <ul>
+        {% for rec in past_url_records %}
+        <li>{{ rec.url }}</li>
+        {% endfor %}
+     </ul>
+  </section>
+  {% endblock content %}

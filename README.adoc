@@ -1,0 +1,22 @@
+= What HTTP Server
+
+image::screenshoot.png[link="https://raw.githubusercontent.com/BrianOn99/what_http_server/master/screenshot.png"]
+
+A django web server that let you find what http server *duckduckgo.com* or
+*rubyweekly.com* is running
+
+This is a small project to learn docker, docker-compose, django, redis, and
+postgresql.
+
+A small amount of code has taken https://github.com/realpython/dockerizing-django
+as reference
+
+== Run Server
+....
+docker-compose build
+docker-compose up -d
+docker-compose run my_django python /usr/src/app/mysite/manage.py migrate
+....
+
+_Browse localhost:12345 in your browser!_
+
